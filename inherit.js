@@ -1,26 +1,27 @@
-class Vehicle {
-    constructor(type) {
-        this.type = type;
-    }
+// Parent class
+class Flower {
+  constructor(color) {
+    this.color = color;
+  }
 
-    move() {
-        console.log(`The ${this.type} is moving`);
-    }
+  bloom() {
+    console.log(`The ${this.color} flower is blooming.`);
+  }
 }
 
-// Derived class inheriting from Vehicle
-class Car extends Vehicle {
-    constructor(type, brand) {
-        super(type); // call the parent class constructor
-        this.brand = brand;
-    }
+// Child class 
+class Rose extends Flower {
+  constructor(color, fragrance) {
+    super(color); // Call parent constructor
+    this.fragrance = fragrance;
+  }
 
-    // overriding the move method (polymorphism)
-    move() {
-        console.log(`The ${this.brand} car is driving on the road`);
-    }
+  details() {
+    console.log(`This is a ${this.color} rose with a ${this.fragrance} fragrance.`);
+  }
 }
 
-// Object creation
-const myCar = new Car("car", "Toyota");
-myCar.move(); // The Toyota car is driving on the road
+// Usage
+const rose1 = new Rose("red", "sweet");
+rose1.bloom();    
+rose1.details();  
