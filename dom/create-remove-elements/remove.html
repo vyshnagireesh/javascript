@@ -1,0 +1,23 @@
+<!-- // direclty the element from they dom -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Remove example</h2>
+    <p id="my-para">Lorem ipsum dolor sit amet.</p>
+    <button onclick="removepara()">Remove paragraph</button>
+    <script>
+        function removepara() {
+            let para = document.getElementById("my-para")
+            para.remove(); // directly remove the element
+        }
+    </script>
+</body>
+
+</html>
