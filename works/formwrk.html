@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Register Form</h2>
+    <form id="myform" onsubmit="">
+        <label>name:</label>
+        <input type="text" id="name" name="name" >
+        <span class="error" id="newerror"></span>
+       <br><br>
+        <label>email:</label>
+        <input type="email" id="email" name="email" >
+        <span class="error" id="emailerror"></span>
+       <br><br>
+        <label>age</label>
+        <input type="text" id="age" name="age" >
+        <span class="error" id="ageerror"></span>
+        <br><br>
+                <label>gender</label>
+                <select id="gender" name="gender">
+                        <option value="">Select </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                </select>
+        <span class="error" id="gendererror"></span>
+        <br><br>
+        <label>password</label>
+        <input type="password" id="password" name="password" >
+        <span class="error" id="passworderror"></span>
+       <br><br>
+       <label>confrompassword</label>
+       <input type="password" id="confirmpassword" name="confirmpassword" >
+       <span class="error" id="confirmpassworderror"></span>
+       <br><br>
+        <button type="submit">Submit</button>
+
+
+    </form>
+    <script>
+        function validateForm(){
+            //clearing previous error messages
+            document.getElementById("newerror").innerText="";
+            document.getElementById("emailerror").innerText="";
+            document.getElementById("phoneerror").innerText="";
+            document.getElementById("ageerror").innerText="";
+            document.getElementById("gendererror").innerText="";    
+            document.getElementById("passworderror").innerText="";
+            document.getElementById("confirmpassworderror").innerText="";
+
+            let isValid=true;
+
+            //name validation
+            const name=document.getElementById("name").value.trim();
+            if(name===""){
+                document.getElementById("newerror").innerText="Name is required";
+                isValid=false;
+            }
+        
+
+        //email validation
+        const email=document.getElementById("email").value.trim();
+        const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!emailPattern.test(email)){
+            document.getElementById("emailerror").innerText="Invalid email format";
+            isValid=false;
+        }
+        //age validation
+        const age=document.getElementById("age").value.trim();
+        const agePattern=/^\d+$/;
+        if(!agePattern.test(age)){
+            document.getElementById("ageerror").innerText="Invalid age format";
+            isValid=false;
+        }
+
+        //gender validation
+        const gender=document.getElementById("gender").value;
+        if(gender!=="Male" && gender!=="Female"){
+            document.getElementById("gendererror").innerText="Please select Male or Female";
+            isValid=false;
+        }
+        //password validation
+        const password=document.getElementById("password").value.trim();        
+        if(password.length<8){
+            document.getElementById("passworderror").innerText="Password must be at least 8 characters";
+            isValid=false;
+        }
+
+        //confirm password validation
+        const confirmPassword=document.getElementById("confirmpassword").value.trim();
+        if(confirmPassword!==password){
+            document.getElementById("confirmpassworderror").innerText="Passwords do not match";
+            isValid=false;
+        }
+
+        return isValid;
+    }
+    </script>
+</body>
+</html>
